@@ -19,7 +19,13 @@
         }
 
         function stateChanged() {
-
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    document.getElementById("showPanel").innerHTML=xhr.responseText;
+                }else{
+                    alert(xhr.status);
+                }
+            }
         }
 
         function getInfo() {
@@ -30,6 +36,15 @@
             }
 
             //實作(填入程式碼):設定好回呼函數,並建立好Get連接與送出請求
+            xhr = createXHR();
+            if(xhr==null){
+                alert("Don't support Ajax");
+                return;
+            }
+            xhr.onreadystatechange = stateChanged;
+            var url = "GetResponseText.jsp?memId="+document.getElementById("memId").value;
+            xhr.open("Get", url, true);
+            xhr.send(null);
 
         }
     </script>
