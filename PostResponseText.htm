@@ -38,13 +38,13 @@
 
             //實作(填入程式碼):設定好回呼函數,並建立好POST連接與送出請求
             xhr = createXHR();
-            if(xhr==null){
+            if (xhr == null) {
                 alert("Don't support Ajax!");
                 return;
             }
             xhr.onreadystatechange = stateChanged;
             var url = "PostResponseText.jsp";
-            var content = "memId="+document.getElementById("memId").value;
+            var content = "memId=" + document.getElementById("memId").value;
             xhr.open("post", url, true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send(content);
