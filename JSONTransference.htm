@@ -1,0 +1,77 @@
+<html>
+<!-- Created on: 2009/8/3 -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5">
+  <title></title>  
+<script src="json.js"></script>  
+<script>   
+var xhr; 
+
+function sendJSON(){	
+  var emp = createJSON();
+  xhr = null;
+  createXHR();	
+  
+  if(xhr == null)
+    return;
+  																		 
+  var url = "JSONTransference";  
+  var jsonString=JSON.stringify(emp);
+  xhr.onreadystatechange = stateChanged; 
+  xhr.open("POST",url,true);
+  xhr.send(jsonString);
+}
+ 
+function createJSON(){
+  var emp = {
+             empno : 7566,
+             ename : "JONES",
+             job : "MANAGER",
+             mgr : "7839",
+             hiredate : "1981-04-02",
+             sal : 2975,	
+             deptno : 20
+             }   
+  return emp;			   
+}
+
+function createXHR(){
+  if( window.ActiveXObject )
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  else if( window.XMLHttpRequest )
+    xhr = new XMLHttpRequest();
+} 
+
+function stateChanged(){  
+  if( xhr.readyState == 4 ){  
+    switch( xhr.status ){
+	  case 200:
+ 		showEmps();
+		break;
+	  case 404:	
+	    alert("檔案找不到");		   
+		break;
+	  case 500:		
+	    alert("伺服端程式錯誤");		 
+		break;
+	  default:		  
+	    alert(xhr.statusText);
+	}  //swith
+
+  } //if
+}					 
+
+function showEmps(){
+  var emp = xhr.responseText; 
+  document.getElementById("showPanel").innerHTML = emp; 
+}
+
+</script>
+</head>
+<body>	   
+<input type=button value="send JSON" onClick="sendJSON();"><br>
+<p>
+<div id=showPanel></div>
+
+</body>
+</html>

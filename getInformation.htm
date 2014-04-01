@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>輕巧網頁...Top 10</title>
+<style> 
+#wrapper { width:1000px;
+           margin:auto;
+         }
+#left    { width:260px;
+           margin:2px;
+		   padding:3px;
+		   float:left;
+         }
+#center  { margin:6px;
+		   padding:2px;
+		   float:left;
+         }	
+#right   { width:260px;
+           margin:2px;
+		   padding:3px;
+		   float:right;
+         }
+table.infoTable{ border-style:none;
+           }
+table.infoTable td { border-style:none;
+                border-bottom-style:dotted;
+				border-bottom-color:deepPink;
+				border-bottom-width:2px;
+				padding-left:5px;
+           }		   
+tr.headerLine   { color:deepPink;
+         }
+td.amount {text-align:right}		 		 		 	 		 
+</style>
+<script>		
+var xhr=null;
+ 
+function createXHR(){	
+  if( window.ActiveXObject )  
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  else if( window.XMLHttpRequest )
+    xhr =  new XMLHttpRequest();
+  else							
+    xhr = null;
+}	
+ 
+function stateChanged(){  
+  if( xhr.readyState == 4){	 //如果請求已做完
+    if( xhr.status == 200 ){ //如果正確處理完畢
+	  //將載入中......訊息隱藏
+      document.getElementById("wait").style.display="none"; //不可見
+	  
+	  //將伺服端回傳的資料刷新		  
+	  //***************	 
+	
+ 
+	}
+	else{		
+      document.getElementById("wait").style.display="none";
+	  alert(xhr.status);
+	}  
+  }
+}
+	   
+function getEmp(DEPTNO){		
+  createXHR();
+  if(xhr == null){		 
+    alert("Does not support Ajax~~");
+	return;
+  } 	
+  //準備好要送出查詢的url			   
+  //*********注意下一列中欄位名稱的大小寫
+  var url="getDeptEmp_Table.jsp?DEPTNO=" + DEPTNO;
+  //設定好回呼函數
+  xhr.onreadystatechange = stateChanged;
+  //建立連結
+  xhr.open("Get",url,true);	
+  //送出查詢
+  xhr.send(null);
+  //將載入中......訊息顯示
+  document.getElementById("wait").style.display="";
+}
+</script>
+</head>
+ 
+<body>
+<div id="wrapper">
+<div id="left">
+<h2>Top 6 Customer</h2>
+<table class="infoTable">
+  <tr class="headerLine">
+  <td>NAME</td>
+  <td>CREDIT</td>
+  </tr>
+  <tr>
+  <td>JUST TENNIS</td>
+  <td class="amount">3000.00</td>
+  </tr>
+  <tr>
+  <td>JOCKSPORTS</td>
+  <td class="amount">5000.00</td>
+  </tr>
+  <tr>
+  <td>K + T SPORTS</td>
+  <td class="amount">5000.00</td>
+  </tr>
+  <tr>
+  <td>SHAPE UP</td>
+  <td class="amount">6000.00</td>
+  </tr>
+  <tr>
+  <td>VOLLYRITE</td>
+  <td class="amount">7000.00</td>
+  </tr>
+  <tr>
+  <td>NORTH WOODS HEALTH</td>
+  <td class="amount">8000.00</td>
+  </tr>
+</table>
+</div><!-- end of left -->
+<div id="center">
+部門
+<select name="DEPTNO" id="DEPTNO" onChange="getEmp(this.value);">  
+<option value="">請選擇</option>
+		
+<option value='10'>
+ACCOUNTING</option>
+		
+<option value='20'>
+RESEARCH</option>
+		
+<option value='30'>
+SALES</option>
+		
+<option value='40'>
+OPERATIONS</option>
+		
+<option value='50'>
+MIS</option>
+		
+<option value='60'>
+MANAGER</option>
+		
+<option value='70'>
+HR</option>
+ 	 
+</select>
+<p>
+ 
+員工資料 : <br>	
+ 
+<span id="empPanel">
+ 
+</span>
+<div id="wait" style="display:none;position:absolute;top:100px;left:460px"><img src="wait.gif" />
+</div>
+</div><!-- end of center -->
+<div id="right">
+<h2>Top 10 Order</h2>
+<table class="infoTable">
+  <tr class="headerLine">
+  <td>ORDID</td>
+  <td>CUSTID</td>
+  <td>TOTAL</td>
+  </tr>
+  <tr>
+  <td>617</td>
+  <td>105</td>
+  <td class="amount">46370.00</td>
+  </tr>
+  <tr>
+  <td>614</td>
+  <td>102</td>
+  <td class="amount">23940.00</td>
+  </tr>
+  <tr>
+  <td>605</td>
+  <td>106</td>
+  <td class="amount">8324.00</td>
+  </tr>
+  <tr>
+  <td>613</td>
+  <td>108</td>
+  <td class="amount">6400.00</td>
+  </tr>
+  <tr>
+  <td>612</td>
+  <td>104</td>
+  <td class="amount">5860.00</td>
+  </tr>
+  <tr>
+  <td>618</td>
+  <td>102</td>
+  <td class="amount">3510.50</td>
+  </tr>
+  <tr>
+  <td>619</td>
+  <td>104</td>
+  <td class="amount">1260.00</td>
+  </tr>
+  <tr>
+  <td>616</td>
+  <td>103</td>
+  <td class="amount">764.00</td>
+  </tr>
+  <tr>
+  <td>621</td>
+  <td>100</td>
+  <td class="amount">730.00</td>
+  </tr>
+  <tr>
+  <td>615</td>
+  <td>107</td>
+  <td class="amount">710.00</td>
+  </tr>
+</table>
+</div>
+</div>
+</body>
+</html>
+

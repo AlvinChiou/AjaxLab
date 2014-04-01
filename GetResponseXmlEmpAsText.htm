@@ -1,0 +1,53 @@
+<html>
+<!-- Created on: 2009/7/3 -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5">
+  <title>取得XML資料將其視為文字性資料</title> 
+  
+<script>  
+var xhr = null;	   
+
+function createXHR(){
+  var xhr;
+  if( window.XMLHttpRequest )
+	xhr = new XMLHttpRequest();
+  else if( window.ActiveXObject )
+    xhr = new ActiveXObject( "Microsoft.XMLHTTP" );
+  else
+    xhr = null;
+  
+  return xhr;	
+}
+
+function stateChanged(){  	
+  if( xhr.readyState == 4 ){	
+    if( xhr.status == 200 ){   
+	  //回傳的資料若以純文字看待不容易剖析,可將其改為以XML來處理...^_^\\\)
+	  alert( xhr.??????? );
+	}else{ 
+	  alert( xhr.status );
+    }
+  } 
+}  
+
+function getXML(){	
+  xhr = createXHR();
+  if(xhr==null){
+    alert("Does not support Ajax...");
+	return;
+  }		   
+  
+  	
+  var url = "sample.xml";
+  xhr.open("Get",url,true);
+  xhr.onreadystatechange = stateChanged;   
+  xhr.send(null);
+} 
+</script>  
+
+</head>
+<body>
+<input type="button" value="顯示員工資料"	onclick="getXML();">
+<div id="showPanel"></div>
+</body>
+</html>

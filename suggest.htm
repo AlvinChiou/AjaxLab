@@ -1,0 +1,73 @@
+<html>
+<!-- Created on: 2009/10/25 -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5">
+  <title>Suggest......</title>
+<script>
+var xhr = null;
+
+function createXHR(){	  
+  var xhr;
+  if( window.XMLHttpRequest ){	
+    xhr = new XMLHttpRequest();
+  }else if( window.ActiveXObject ){		
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  } else
+    xhr = null;
+			 
+  return xhr;	
+} 
+
+function readyStateChanged(){ 
+  if( xhr.readyState==4){
+    switch( xhr.status ){ 
+	  case 200:
+		//顯示建議盒
+		//**************
+		//將伺服端回傳的資料放入建議盒中	
+		//**************
+		//設定建議盒中的span被點按時,可以將其中的文字放到文字輸入盒中							   
+		//記得設定事件處理程序並關閉建議盒
+		//**************
+		break;
+	  case 404:	 
+	    alert("檔案找不到");		  
+		break;
+	  case 500:
+	    alert("伺服端程式錯誤");
+	}
+  }
+}
+ 
+function showList(){	
+  var eName; 
+  eName = document.getElementById("eName").value;  		 
+  
+  //若按enter鍵或無資料,就把建議盒清掉並隱藏起來
+  //***************
+  									   
+  xhr = createXHR();  
+  if( xhr == null){	  
+    alert("Does not suppor xhr...");
+	return true;
+  }
+  
+  //準備好要送出查詢的url
+  var url = "suggest.jsp?eName=" +  eName;
+  //設定好回呼函數
+  xhr.onreadystatechange = readyStateChanged; 
+  //建立連結
+  xhr.open("get",url,true);
+  //送出查詢
+  xhr.send(null);
+}	
+
+</script>
+</head>
+<body>
+員工姓名:
+<input type="text" name="eName" id="eName" style="width:150px" onKeyUp="showList();">  
+<div id="showPanel" style="display:none;position:absolute;top:40px;left:82px;width:150px;dispay:none;color:blue;border:1;border-style:dotted">
+	 </div>
+</body>
+</html>

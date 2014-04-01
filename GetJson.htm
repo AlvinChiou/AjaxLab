@@ -1,0 +1,92 @@
+<html>
+<!-- Created on: 2009/7/2 -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5">
+  <title>使用GET請求方式取得JSON回應字串</title>			   
+  <style> 
+  table {border-collapse:collapse;}
+  .mainTitle{ background-color:#D0D0D0;
+				color:blue;	
+				font-weight:normal;
+				padding : 5px;
+		      }  
+  .mainTitle,.mainData{border-style:dotted;
+                       border-width:3px;
+		      } 				
+  .phoneTable {border-style:none;
+               margin : 5px 10px 5px 5px;
+              }
+  .phoneTable th{ background-color:white;
+                color:blue;	
+				font-weight:normal;
+				padding : 5px;
+				}					
+  </style>  
+<script src="json.js"></script>   
+<script>  
+var xhr = null;
+
+function showEmployee(){
+  //取回json字串
+  var jsonStr = ????? ;
+  //剖析json字串,將其轉成jsob物件
+  var emp = ????? ;
+  
+  var str = "<table class='empTable' align='center'>";
+  str += "<tr><td class='mainTitle'>姓名</td><td class='mainData'>"+ ?????顯示員工姓名 +"</td></tr>";
+  str += "<tr><td class='mainTitle'>電話</td><td class='mainData'><table class='phoneTable' align='left'>";
+  str += "<tr><th>(O)</th><td>"+ ?????顯示員工的公司電話 +"</td></tr>";
+  str += "<tr><th>(H)</th><td>"+ ?????顯示員工的家中電話 +"</td></tr>";
+  str += "<tr><th>(M)</th><td>"+ ?????顯示員工的行動電話 +"</td></tr>";	
+  str += "</table></td></tr>";
+  str += "</table>"; 
+  document.getElementById("showPanel").innerHTML = str;
+}
+
+function createXHR(){	
+  if( window.XMLHttpRequest ){	
+    xhr = new XMLHttpRequest();
+  }else if( window.ActiveXObject ){		
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  } else
+    xhr = null;  
+  return xhr;
+}	
+
+function stateChanged(){  
+  if( xhr.readyState == 4){
+    if( xhr.status == 200){
+	  showEmployee();
+	}else{
+	  alert( xhr.status );
+	}
+  }
+}
+
+function getEmployee(){	
+  xhr = createXHR();
+  if( xhr == null ){
+    alert("Does not support Ajax....");
+	return;
+  }		   
+  
+  xhr.onreadystatechange = stateChanged;	 
+  var url= "GetJson.jsp?empno=" + document.getElementById("empno").value;
+  xhr.open("Get",url,true); 
+  xhr.send( null );
+}
+</script>
+</head>
+<body>
+<table align="center">
+<tr><td>
+員工帳號:<input type="text" name="empno" id="empno" value="1688">
+<input type="button" value="取得員工資料" onClick="getEmployee();">	
+<p>&nbsp;</p>
+<div id="showPanel">
+</div> 	
+</td>
+</tr>
+</table>
+</body>
+</html>

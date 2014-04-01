@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=big5">
+    <title></title>
+    <script>
+        function createXHR() {
+            var xhr = null;
+            if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }
+            else if(window.ActiveXObject){
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xhr;
+        }
+        function stateChanged() {
+            if(xhr.readyState==4){
+
+                if(xhr.status==200){
+                    alert(xhr.getAllResponseHeaders());
+                }else{
+                    alert(xhr.status);
+                }
+            }
+        }
+        function getAllResponseHeaders() {
+            xhr = createXHR();
+            if(xhr==null){
+                alert("Don't support Ajax!");
+                return;
+            }
+            xhr.onreadystatechange = stateChanged;
+            xhr.open("get", "GetAllResponseHeaders.jsp", true);
+            xhr.send(null);
+        }
+    </script>
+</head>
+<body>
+<input type=button value="getAllResponseHeaders"
+       onclick="getAllResponseHeaders()">
+
+<div id="showPanel"></div>
+</body>
+</html>

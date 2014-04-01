@@ -1,0 +1,67 @@
+<html>
+<!-- Created on: 2009/7/3 -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5">
+  <title>操作DOM XML文件:篩選所要的資料</title>
+<script> 
+var xhr;   
+
+function getEmployees(){	
+  //取得回傳的xml文件,
+  //經過篩選後,將xml標籤(節點)中的資料顯示在HTML頁面中					   
+  
+
+}  
+
+function createXHR(){
+  var xhr;
+  if( window.XMLHttpRequest )
+	xhr = new XMLHttpRequest();
+  else if( window.ActiveXObject )
+    xhr = new ActiveXObject( "Microsoft.XMLHTTP" );
+  else
+    xhr = null;	  
+
+  return xhr;	
+}
+
+function stateChanged(){  
+  if( xhr.readyState == 4 ){
+    if( xhr.status == 200 ){
+		getEmployees();
+    }else{
+	  alert( xhr.status );
+	} 
+  }	
+}  
+
+function getXML(){ 
+  createXHR();
+  if(xhr==null){
+    alert("Does not support Ajax...");
+	return;
+  }		   
+	
+  //實作(填入程式碼):設定好回呼函數,並建立好連接與送出請求		 
+  xhr.onreadystatechange = stateChanged;
+  xhr.open("Get","sample.xml",true);
+  xhr.send(null);
+}
+
+</script>
+ 
+</head>
+<body>
+<form>
+  部門代號:
+  <select name="deptno" id="deptno" onChange="getXML();">
+    <option value="10">ACCOUNTING</option>
+    <option value="20">RESEARCH</option>
+    <option value="30">SALES</option>
+    <option value="40">OPERATIONS</option>
+  </select>
+</form>	 
+<div id="showPanel">
+</div>
+</body>
+</html>

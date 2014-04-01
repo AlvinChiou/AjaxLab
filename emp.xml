@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="big5" ?>
+<!--
+-
+- phpMyAdmin XML Dump
+- version 3.0.1.1
+- http://www.phpmyadmin.net
+-
+- 主機: localhost
+- 建立日期: Jul 12, 2009, 10:31 PM
+- 伺服器版本: 5.1.30
+- PHP 版本: 5.2.7
+-->
+
+<!--
+- 資料庫: 'sample'
+-->
+<sample>
+  <!-- 資料表 emp -->
+    <emp>
+        <empno>7839</empno>
+        <ename>KING</ename>
+        <job>PRESIDENT</job>
+        <hiredate>1981-11-18</hiredate>
+        <sal>5000</sal>
+        <deptno>10</deptno>
+    </emp>
+    <emp>
+        <empno>7698</empno>
+        <ename>BLAKE</ename>
+        <job>MANAGER</job>
+        <mgr>7839</mgr>
+        <hiredate>1981-05-01</hiredate>
+        <sal>2850</sal>
+        <deptno>30</deptno>
+    </emp>
+    <emp>
+        <empno>7782</empno>
+        <ename>CLARK</ename>
+        <job>MANAGER</job>
+        <mgr>7839</mgr>
+        <hiredate>1981-06-09</hiredate>
+        <sal>2450</sal>
+        <deptno>10</deptno>
+    </emp>
+    <emp>
+        <empno>7566</empno>
+        <ename>JONES</ename>
+        <job>MANAGER</job>
+        <mgr>7839</mgr>
+        <hiredate>1981-04-02</hiredate>
+        <sal>2975</sal>
+        <deptno>20</deptno>
+    </emp>
+    <emp>
+        <empno>7654</empno>
+        <ename>MARTIN</ename>
+        <job>SALESMAN</job>
+        <mgr>7698</mgr>
+        <hiredate>1981-09-28</hiredate>
+        <sal>1250</sal>
+        <comm>1400</comm>
+        <deptno>30</deptno>
+    </emp>
+    <emp>
+        <empno>7499</empno>
+        <ename>ALLEN</ename>
+        <job>SALESMAN</job>
+        <mgr>7698</mgr>
+        <hiredate>1981-02-20</hiredate>
+        <sal>1600</sal>
+        <comm>300</comm>
+        <deptno>30</deptno>
+    </emp>
+    <emp>
+        <empno>7844</empno>
+        <ename>TURNER</ename>
+        <job>SALESMAN</job>
+        <mgr>7698</mgr>
+        <hiredate>1981-09-08</hiredate>
+        <sal>1500</sal>
+        <comm>0</comm>
+        <deptno>30</deptno>
+    </emp>
+    <emp>
+        <empno>7900</empno>
+        <ename>JAMES</ename>
+        <job>CLERK</job>
+        <mgr>7698</mgr>
+        <hiredate>1981-10-03</hiredate>
+        <sal>950</sal>
+        <deptno>30</deptno>
+    </emp>
+    <emp>
+        <empno>7521</empno>
+        <ename>WARD</ename>
+        <job>SALESMAN</job>
+        <mgr>7698</mgr>
+        <hiredate>1981-02-22</hiredate>
+        <sal>1250</sal>
+        <comm>500</comm>
+        <deptno>30</deptno>
+    </emp>
+    <emp>
+        <empno>7902</empno>
+        <ename>FORD</ename>
+        <job>ANALYST</job>
+        <mgr>7566</mgr>
+        <hiredate>1981-10-03</hiredate>
+        <sal>3000</sal>
+        <deptno>20</deptno>
+    </emp>
+    <emp>
+        <empno>7369</empno>
+        <ename>SMITH</ename>
+        <job>CLERK</job>
+        <mgr>7902</mgr>
+        <hiredate>1980-10-17</hiredate>
+        <sal>800</sal>
+        <deptno>20</deptno>
+    </emp>
+    <emp>
+        <empno>7788</empno>
+        <ename>SCOTT</ename>
+        <job>ANALYST</job>
+        <mgr>7566</mgr>
+        <hiredate>1982-10-09</hiredate>
+        <sal>3000</sal>
+        <deptno>20</deptno>
+    </emp>
+    <emp>
+        <empno>7876</empno>
+        <ename>ADAMS</ename>
+        <job>CLERK</job>
+        <mgr>7788</mgr>
+        <hiredate>1983-01-12</hiredate>
+        <sal>1100</sal>
+        <deptno>20</deptno>
+    </emp>
+    <emp>
+        <empno>7934</empno>
+        <ename>MILLER</ename>
+        <job>CLERK</job>
+        <mgr>7782</mgr>
+        <hiredate>1982-01-23</hiredate>
+        <sal>1300</sal>
+        <deptno>10</deptno>
+    </emp>
+</sample>
