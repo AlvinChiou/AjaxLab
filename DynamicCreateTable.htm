@@ -1,28 +1,44 @@
 <html>
 <!-- Created on: 2009/7/8 -->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=big5">
-  <title>動態建立表格</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=big5">
+    <title>動態建立表格</title>
 
-<script> 
-function createTable(to){
-  
-} 
+    <script>
+        function createTable(to) {
+            var i, j , tr, textNode, rows = 3, cols = 4;
+            var table = document.createElement("table");
+            var tbody = document.createElement("tbody");
+            for(i = 1;i<=rows;i++){
+                tr = document.createElement("tr");
+                for(j=1;j<=cols;j++){
+                    td = document.createElement("td");
+                    textNode = document.createTextNode(i+","+j);
+                    td.appendChild(textNode);
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+            table.appendChild(tbody);
+            table.setAttribute("border", 1);
+            table.setAttribute("borderColor", "blue");
+            document.getElementsByTagName("body")[0].appendChild(table);
+        }
 
-function setAttr(){	
+        function setAttr() {
 
-}
+        }
 
-function removeAttr(){	
+        function removeAttr() {
 
-}
-</script>
+        }
+    </script>
 </head>
 <body id="myBody">
-<input type=button value="create table on Document" onclick="createTable();">  
-<input type=button value="create table on Div" onclick="createTable()">  
+<input type=button value="create table on Document" onclick="createTable();">
+<input type=button value="create table on Div" onclick="createTable()">
 <input type=button value="set attribute" onclick="setAttr()">
-<input type=button value="remove attribute" onclick="removeAttr()"> 
+<input type=button value="remove attribute" onclick="removeAttr()">
 
 <div id=showPanel style="height:100px;background-color:lightBlue"></div>
 </body>
