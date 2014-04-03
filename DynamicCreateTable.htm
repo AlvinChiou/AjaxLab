@@ -7,15 +7,23 @@
     <script>
         function createTable(id) {
             var i, j , tr, textNode, rows = 3, cols = 4;
-            var table = document.createElement("table");
+            var table = document.createElement("table"); // make <table></table> in html.
             var tbody = document.createElement("tbody");
+            /* Line11 make:
+               <table>
+               以下三行只是給Table Row做群組
+                    <thead></thead>
+                    <tbody></tbody>
+                    <tfoot></tfoot>
+               </table>
+            * */
             for(i = 1;i<=rows;i++){
-                tr = document.createElement("tr");
+                tr = document.createElement("tr"); // Create table rows.
                 for(j=1;j<=cols;j++){
-                    td = document.createElement("td");
-                    textNode = document.createTextNode(i+","+j);
-                    td.appendChild(textNode);
-                    tr.appendChild(td);
+                    td = document.createElement("td"); //create tablr columns, one cell.
+                    textNode = document.createTextNode(i+","+j); //One cell one textNode.
+                    td.appendChild(textNode); //push one element(textNode) into cell.
+                    tr.appendChild(td); //push one element(one cell) into tableRow.
                 }
                 tbody.appendChild(tr);
             }
