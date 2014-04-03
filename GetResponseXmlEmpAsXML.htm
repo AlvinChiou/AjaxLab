@@ -10,8 +10,28 @@ var xhr = null;
 function showEmps(){  
   //取得回傳的xml文件
   //將xml標籤(節點)中的資料顯示在HTML頁面中					   
-  
-}
+  var i, j, emps, fields, text, tr, td, textNode;
+    var doc = xhr.responseXML;
+    emps = doc.getElementsByTagName("emp");
+    table = document.createElement("table");
+    tbody = document.createElement("tbody");
+    for(i=0;i<emps.length;i++){
+        tr = document.createElement("tr");
+        fields = emps[i].childNodes;
+        for(j = 0;j<fields.length;j++){
+            if(fields[i].nodeType==1){
+                text = fields[i].firstChild.nodeValue;
+                td=document.createElement("td");
+                textNode=document.createTextNode(text);
+                td.appendChild(textNode);
+                tr.appendChild(td);
+            }//End if
+        } //End for j
+    }//End for i
+    table.appendChild(tr);
+    table.setAttribute("border",1);
+    document.getElementById("showPanel").appendChild(table);
+}// End function
 
 function createXHR(){
   var xhr;

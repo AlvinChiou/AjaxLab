@@ -5,7 +5,7 @@
     <title>動態建立表格</title>
 
     <script>
-        function createTable(to) {
+        function createTable(id) {
             var i, j , tr, textNode, rows = 3, cols = 4;
             var table = document.createElement("table");
             var tbody = document.createElement("tbody");
@@ -22,7 +22,7 @@
             table.appendChild(tbody);
             table.setAttribute("border", 1);
             table.setAttribute("borderColor", "blue");
-            document.getElementsByTagName("body")[0].appendChild(table);
+            document.getElementById(id).appendChild(table);
         }
 
         function setAttr() {
@@ -35,8 +35,8 @@
     </script>
 </head>
 <body id="myBody">
-<input type=button value="create table on Document" onclick="createTable();">
-<input type=button value="create table on Div" onclick="createTable()">
+<input type=button value="create table on Document" onclick="createTable('myBody');">
+<input type=button value="create table on Div" onclick="createTable('showPanel')">
 <input type=button value="set attribute" onclick="setAttr()">
 <input type=button value="remove attribute" onclick="removeAttr()">
 
