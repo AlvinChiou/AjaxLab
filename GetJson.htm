@@ -28,16 +28,16 @@ var xhr = null;
 
 function showEmployee(){
   //取回json字串
-  var jsonStr = ????? ;
+  var jsonStr = xhr.responseText ;
   //剖析json字串,將其轉成jsob物件
-  var emp = ????? ;
+  var emp = JSON.parse(jsonStr) ;
   
   var str = "<table class='empTable' align='center'>";
-  str += "<tr><td class='mainTitle'>姓名</td><td class='mainData'>"+ ?????顯示員工姓名 +"</td></tr>";
+  str += "<tr><td class='mainTitle'>姓名</td><td class='mainData'>"+ emp.ename +"</td></tr>";
   str += "<tr><td class='mainTitle'>電話</td><td class='mainData'><table class='phoneTable' align='left'>";
-  str += "<tr><th>(O)</th><td>"+ ?????顯示員工的公司電話 +"</td></tr>";
-  str += "<tr><th>(H)</th><td>"+ ?????顯示員工的家中電話 +"</td></tr>";
-  str += "<tr><th>(M)</th><td>"+ ?????顯示員工的行動電話 +"</td></tr>";	
+  str += "<tr><th>(O)</th><td>"+ emp.phone.O +"</td></tr>";
+  str += "<tr><th>(H)</th><td>"+ emp.phone.H +"</td></tr>";
+  str += "<tr><th>(M)</th><td>"+ emp.phone.M +"</td></tr>";
   str += "</table></td></tr>";
   str += "</table>"; 
   document.getElementById("showPanel").innerHTML = str;
