@@ -48,7 +48,25 @@
 
 <h2>JSON</h2>
 <script>
-
+    //Using JSON
+    var emp3 = {
+        "empno": "7318",
+        "ename": "Amy",
+        "phone": {
+            "Office": "03-4257387",
+            "Home": "03-7353891",
+            "Mobile": "0933-083625"},
+        "submit": function (amount) {
+            if (amount <= 10000)
+                document.write("申請", amount, "元,通過!<br>");
+            else
+                document.write("申請", amount, "元,不通過!不得超過10000元!");
+        }
+    }
+    document.write("代號:", emp3.empno,"<br>");
+    document.write("姓名:",emp3.ename,"<br>");
+    document.write("電話",emp3.phone.Mobile,"<br>");
+    emp3.submit(15000);
 </script>
 </body>
 </html>
