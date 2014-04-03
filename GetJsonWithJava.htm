@@ -24,6 +24,7 @@ var xhr = null;
 
 function showEmployee(){
   var jsonStr = xhr.responseText;
+    alert(jsonStr);
   var emp = JSON.parse(jsonStr);
   
   var str = "<table border='1' class='empTable' align='center'>";
