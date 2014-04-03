@@ -1,25 +1,53 @@
 <html>
 <!-- Created on: 2012/7/2 -->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=big5">
-  <style>
-  h2 { color:deepPink}
-  </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=big5">
+    <style>
+        h2 {
+            color: deepPink
+        }
+    </style>
 
 </head>
-<body>	   
+<body>
 <h2> new Object()</h2>
-<script>  
-
+<script>
+    //此寫法如有出現兩種不同狀況將會發生同樣程式碼重複撰寫之問題
+    var emp = new Object();
+    emp.empno = "7811";
+    emp.ename = "Ann";
+    emp.submit = function (amount) {
+        if (amount <= 10000)
+            document.write("申請", amount, "元,通過!<br>");
+        else
+            document.write("申請", amount, "元,不通過!不得超過10000元!");
+    }
+    document.write("代號:", emp.empno, "<br>");
+    document.write("姓名:", emp.ename, "<br>");
+    emp.submit(6000);
 </script>
 
 <h2> new 類別名稱()</h2>
-<script> 	
- 
-</script>  
+<script>
+    //此寫法可以減少同樣程式碼重複撰寫的現象，增加程式再利用性。
+    function Employee(empno, ename) {
+        this.empno = empno;
+        this.ename = ename;
+        this.submit = function (amount) {
+            if (amount <= 10000)
+                document.write("申請", amount, "元,通過!<br>");
+            else
+                document.write("申請", amount, "元,不通過!不得超過10000元!");
+        }
+    }
+    var emp2 = new Employee("7812", "Adam");
+    document.write("代號:", emp2.empno, "<br>");
+    document.write("姓名:", emp2.ename, "<br>");
+    emp.submit(26000);
+</script>
 
 <h2>JSON</h2>
-<script> 	
+<script>
 
 </script>
 </body>
